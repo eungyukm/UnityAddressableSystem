@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -11,6 +12,15 @@ public class InitializationLoader : MonoBehaviour
     [SerializeField] private GameSceneSO menuToLoad = default;
     
     [SerializeField] private AssetReference menuLoadChannel = default;
+
+    private eModeType updateMode;
+
+    private void Awake()
+    {
+        // 냅다 다운로드
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +30,6 @@ public class InitializationLoader : MonoBehaviour
 
     private void LoadEventChannel(AsyncOperationHandle<SceneInstance> obj)
     {
-        // TODO : LoadAssetAsync 찾아보기
         menuLoadChannel.LoadAssetAsync<LoadEventChannelSO>().Completed += LoadMainMenu;
     }
 
@@ -28,7 +37,41 @@ public class InitializationLoader : MonoBehaviour
     {
         obj.Result.RaiseEvent(menuToLoad, true);
         
-        // TODO : UnloadSceneAsync 찾아보기
         SceneManager.UnloadSceneAsync(0);
+    }
+    
+    public enum eModeType
+    {
+        DowaloadAsset,
+        Wait,
+    }
+
+    private void BundleDownload()
+    {
+        string key = "";
+        Addressables.GetDownloadSizeAsync(key).Completed += (opSize) =>
+        {
+            if (opSize.Status == AsyncOperationStatus.Succeeded && opSize.Result > 0)
+            {
+                Addressables.DownloadDependenciesAsync(key, true).Completed += (opDownload) =>
+                {
+                    if (opDownload.Status != AsyncOperationStatus.Succeeded)
+                    {
+                        return;
+                    }
+                    OnDownloadDone();
+                };
+            }
+            else
+            {
+                OnDownloadDone();
+            }
+        };
+        updateMode = eModeType.Wait;
+    }
+
+    private void OnDownloadDone()
+    {
+        
     }
 }

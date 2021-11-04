@@ -18,9 +18,7 @@ public class SceneLoader : MonoBehaviour
 
     [Header("Broadcasting on")] 
     [SerializeField] private VoidEventChannelSO onSceneReady = default;
-
-    // TODO : AsyncOperationHandle 찾아보기
-    // TODO : SceneInstantce 찾아보기
+    
     // 로딩하는 Scene의 핸들러
     private AsyncOperationHandle<SceneInstance> loadingOperationHandle;
     private AsyncOperationHandle<SceneInstance> gameplayManagerLoadingOpHandle;
@@ -33,10 +31,13 @@ public class SceneLoader : MonoBehaviour
     private float fadeDuration = .5f;
     // 새로운 로딩 요청을 막기 위해 존재
     private bool isLoading = false;
+
+    private const string className = "[SceneLoader]";
     
     #if UNITY_EDITOR
     private void LocationColdStartup(GameSceneSO currentlyOpenedLocation, bool showLoadingScreen, bool fadeSceen)
     {
+        DebugFro.Log("[SceneLoader] OnLoader StartUP Call");
         currentlyLoadScene = currentlyOpenedLocation;
 
         if (currentlyLoadScene.sceneType == GameSceneSO.eGameSceneType.Location)
@@ -52,6 +53,8 @@ public class SceneLoader : MonoBehaviour
 
     private void OnEnable()
     {
+        DebugFro.isLogVisable = true;
+        
         loadLocation.OnLoadingRequested += LoadLocation;
         loadMenu.OnLoadingRequested += LoadMenu;
     }
@@ -64,7 +67,7 @@ public class SceneLoader : MonoBehaviour
 
     private void LoadLocation(GameSceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)
     {
-        Debug.Log("[SceneLoader] LoadLocation Call!!");
+        DebugFro.Log(className, "LoadLocation Call!!");
         // 이중 로딩 방지
         if (isLoading)
         {
@@ -90,6 +93,8 @@ public class SceneLoader : MonoBehaviour
     
     private void LoadMenu(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
     {
+        DebugFro.Log(className,"LoadMenu Call!!");
+        
         //Prevent a double-loading, for situations where the player falls in two Exit colliders in one frame
         if (isLoading)
             return;
@@ -111,6 +116,7 @@ public class SceneLoader : MonoBehaviour
 
     private void OnGameplayManagersLoaded(AsyncOperationHandle<SceneInstance> obj)
     {
+        DebugFro.Log(className, "OnGameplayManagersLoaded Call!!");
         gameplayManagerSceneInstance = gameplayManagerLoadingOpHandle.Result;
 
         StartCoroutine(UnloadPreviousScene());
@@ -118,6 +124,7 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator UnloadPreviousScene()
     {
+        DebugFro.Log( className,"UnloadPreviousScene Call!!");
         // TODO : fadeRequestChannel 알아 보기
 
         yield return new WaitForSeconds(fadeDuration);
@@ -139,7 +146,7 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     private void LoadNewScene()
     {
-        Debug.Log("[SceneLoader] 새로운 씬 로드 시작!");
+        DebugFro.Log( className, "LoadNewScene Call!!");
         // TODO : showLoadingScreen 찾아보기
 
         loadingOperationHandle = sceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
@@ -148,11 +155,12 @@ public class SceneLoader : MonoBehaviour
 
     private void OnNewSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
     {
+        DebugFro.Log(className,"OnNewSceneLoaded Call!!");
         // 현재 로딩 Scene 저장
         currentlyLoadScene = sceneToLoad;
 
         Scene scene = obj.Result.Scene;
-        // TODO : SceneManager.SetActiveScene 찾아보기
+        // Scene 활성화
         SceneManager.SetActiveScene(scene);
 
         isLoading = false;
@@ -168,6 +176,7 @@ public class SceneLoader : MonoBehaviour
     
     private void StartGameplay()
     {
+        DebugFro.Log(className, "StartGameplay Call!!");
         onSceneReady.RaiseEvent();
     }
 }

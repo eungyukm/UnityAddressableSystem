@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class LoadEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<GameSceneSO, bool, bool> OnLoadingRequested;
+    
+    private const string className = "LoadEventChannelSO";
 
     public void RaiseEvent(GameSceneSO locationToLoad, bool showLoadingScene = false, bool fadeScreen = false)
     {
@@ -14,7 +16,7 @@ public class LoadEventChannelSO : DescriptionBaseSO
         }
         else
         {
-            Debug.LogWarning(("[LoadEventChannelSO] OnLoadingRequested UnityAction을 등록 하세요!"));
+            DebugFro.LogWarning(className, "OnLoadingRequested UnityAction을 등록 하세요!");
         }
     }
 }

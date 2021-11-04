@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d8e17003be134d6697c1e51e687d88b, type: 3}
-  m_Name: New Load Event Channel SO
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: DataScriptableObjects_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  guid: 
-  description: 
+  m_Group: {fileID: 11400000, guid: c9d36a0aac641436087c09137a359ad6, type: 2}
+  m_StaticContent: 0
