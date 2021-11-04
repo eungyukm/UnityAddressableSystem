@@ -22,7 +22,9 @@ public class Spawn : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            AssetReference.Instantiate(Vector3.zero, Quaternion.identity, null);
+            //AssetReference.Instantiate(Vector3.zero, Quaternion.identity, null);
+
+            //Add
         }
     }
 }
