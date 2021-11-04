@@ -10,24 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: LogicScriptablObjects
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: LogicScriptablObjects
   m_Data:
     m_SerializedData: []
-  m_GUID: ce25152a22cf88a47b4fec95fb21d659
+  m_GUID: b2ecb1e24c3e04c04b25f2d901ed08a1
   m_SerializeEntries:
-  - m_GUID: b6db18587ecad0741bed44b6d9fd66e1
-    m_Address: Cube
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 382936d5cf0fa4c7f9862b14f510c19c
-    m_Address: LoadMenu_Channel.asset
+  - m_GUID: 7bc2c1374e508456cae0bbda6440c242
+    m_Address: Assets/ScriptableObjects/EventChannels
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c76de4f23c2d3854089c688479bb7185, type: 2}
-    - {fileID: 11400000, guid: 19583f16c56072f4ab9efa98d7588c75, type: 2}
+    - {fileID: 11400000, guid: ed47fba3d43c8484a9e24aa9c1486aed, type: 2}
+    - {fileID: 11400000, guid: 18f697554ee24406aa35f98d2b977ccd, type: 2}

@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: MenuScenes
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: MenuScenes
   m_Data:
     m_SerializedData: []
-  m_GUID: ce25152a22cf88a47b4fec95fb21d659
+  m_GUID: 9fe5ef7349c1f4dbbb40c0b337241b02
   m_SerializeEntries:
-  - m_GUID: b6db18587ecad0741bed44b6d9fd66e1
-    m_Address: Cube
+  - m_GUID: b1f55c5d6ce484994981f0664c54f6da
+    m_Address: MainMenu
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 382936d5cf0fa4c7f9862b14f510c19c
-    m_Address: LoadMenu_Channel.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: b1f55c5d6ce484994981f0664c54f6da, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: b1f55c5d6ce484994981f0664c54f6da, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c76de4f23c2d3854089c688479bb7185, type: 2}
-    - {fileID: 11400000, guid: 19583f16c56072f4ab9efa98d7588c75, type: 2}
+    - {fileID: 11400000, guid: 6dd7115887c0b4595a816a485f3ec4ab, type: 2}
+    - {fileID: 11400000, guid: 83d0a47c9da74443ebb0f46984a40eac, type: 2}
