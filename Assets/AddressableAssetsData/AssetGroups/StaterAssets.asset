@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: StaterAssets
+  m_EditorClassIdentifier: 
+  m_GroupName: StaterAssets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a5fa13d58682f4b2e9a0ededf996f1aa
+  m_SerializeEntries:
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Demo
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StarterAssets
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 96ed473a68a4c4a0d8a8ebe226cbdf95, type: 2}
+    - {fileID: 11400000, guid: aeb9f1b7dc9bf4943a0d98b8369fd76c, type: 2}
