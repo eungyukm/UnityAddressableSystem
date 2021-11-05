@@ -20,9 +20,8 @@ MonoBehaviour:
   - m_GUID: b1f55c5d6ce484994981f0664c54f6da
     m_Address: MainMenu
     m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 102900000, guid: b1f55c5d6ce484994981f0664c54f6da, type: 3}
-    m_TargetAsset: {fileID: 102900000, guid: b1f55c5d6ce484994981f0664c54f6da, type: 3}
+    m_SerializedLabels:
+    - MenuScenes
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:

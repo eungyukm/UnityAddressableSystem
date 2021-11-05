@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -15,17 +16,42 @@ public class InitializationLoader : MonoBehaviour
 
     private eModeType updateMode;
 
+    private const string className = "InitializationLoader";
+    
+    private int downloadCount = 0;
+
+    [SerializeField] private AssetLabelReference[] labels;
+
+    [SerializeField] private bool useDownload;
     private void Awake()
     {
-        // 냅다 다운로드
+        DebugFro.isLogVisable = true;
+
+        updateMode = eModeType.None;
+
+        foreach (var label in labels)
+        {
+            DebugFro.Log(label.labelString);
+        }
+
+        Caching.ClearCache();
         
+        // 냅다 다운로드
+        if (useDownload)
+        {
+            StartCoroutine(BundleDownload());            
+        }
+        else
+        {
+            managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
+                += LoadEventChannel;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
-            += LoadEventChannel;
+
     }
 
     private void LoadEventChannel(AsyncOperationHandle<SceneInstance> obj)
@@ -42,36 +68,60 @@ public class InitializationLoader : MonoBehaviour
     
     public enum eModeType
     {
+        None,
         DowaloadAsset,
         Wait,
+        DownloadDone,
+        DownloadAll,
     }
 
-    private void BundleDownload()
+    private IEnumerator BundleDownload()
     {
-        string key = "";
-        Addressables.GetDownloadSizeAsync(key).Completed += (opSize) =>
+        DebugFro.Log(className,"다운로드 시작!");
+        for (int i = 0; i < labels.Length; i++)
         {
-            if (opSize.Status == AsyncOperationStatus.Succeeded && opSize.Result > 0)
+            int capture = i;
+            Addressables.GetDownloadSizeAsync(labels[capture]).Completed += (opSize) =>
             {
-                Addressables.DownloadDependenciesAsync(key, true).Completed += (opDownload) =>
+                DebugFro.Log(className, $"{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
+                
+                
+                if (opSize.Status == AsyncOperationStatus.Succeeded && opSize.Result > 0)
                 {
-                    if (opDownload.Status != AsyncOperationStatus.Succeeded)
+                    Addressables.DownloadDependenciesAsync(labels[capture], true).Completed += (opDownload) =>
                     {
-                        return;
-                    }
+                        if (opDownload.Status != AsyncOperationStatus.Succeeded)
+                        {
+                            return;
+                        }
+                        OnDownloadDone();
+                    };
+                }
+                else
+                {
                     OnDownloadDone();
-                };
-            }
-            else
-            {
-                OnDownloadDone();
-            }
-        };
-        updateMode = eModeType.Wait;
+                }
+            };
+            updateMode = eModeType.Wait;
+
+            yield return null;
+        }
     }
 
     private void OnDownloadDone()
     {
-        
+        DebugFro.Log(className, "다운로드 완료!!");
+        updateMode = eModeType.DownloadDone;
+
+        downloadCount++;
+
+        if (downloadCount >= labels.Length)
+        {
+            updateMode = eModeType.DownloadAll;
+            DebugFro.Log(className, "모두 다운로드!!");
+            
+            managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
+                += LoadEventChannel;
+        }
     }
 }
