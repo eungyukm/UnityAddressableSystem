@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d9417daa1e6d46d5b00e7c1cc62fe3e, type: 3}
+  m_Name: Demo
+  m_EditorClassIdentifier: 
+  guid: 41a623c5e3bab476aba72b30ea175fe5
+  description: "\uB370\uBAA8\uC6A9 \uC52C\uC785\uB2C8\uB2E4."
+  sceneType: 0
+  sceneReference:
+    m_AssetGUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
