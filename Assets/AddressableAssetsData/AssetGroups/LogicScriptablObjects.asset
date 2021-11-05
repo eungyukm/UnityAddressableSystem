@@ -20,7 +20,8 @@ MonoBehaviour:
   - m_GUID: 7bc2c1374e508456cae0bbda6440c242
     m_Address: Assets/ScriptableObjects/EventChannels
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - LogicScriptableObjects
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:

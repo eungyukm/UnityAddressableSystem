@@ -401,6 +401,16 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  labels:
+  - m_LabelString: MenuScenes
+  - m_LabelString: ManagerScenes
+  - m_LabelString: LogicScriptableObjects
+  - m_LabelString: DataScriptableObjects
+  useDownload: 1
+  useClearCache: 0
+  useClearDependencyCache: 1
+  useCatalog: 0
+  log: {fileID: 707960553}
 --- !u!1 &1690452266
 GameObject:
   m_ObjectHideFlags: 0

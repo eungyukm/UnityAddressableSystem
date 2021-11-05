@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultGroup: ce25152a22cf88a47b4fec95fb21d659
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
@@ -31,12 +31,12 @@ MonoBehaviour:
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: efa3c392dd118ae4896d2ce8c18c16da
   m_RemoteCatalogLoadPath:
-    m_Id: 
+    m_Id: 8563e103a11eee1439fdf5f243f54489
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 2
-  m_overridePlayerVersion: 
+  m_overridePlayerVersion: 1.1
   m_GroupAssets:
   - {fileID: 11400000, guid: 3125bcedeaf3e1048937217e38d77d78, type: 2}
   - {fileID: 11400000, guid: 2cc563c1a42c09e42b8939ff543fd712, type: 2}
@@ -64,7 +64,21 @@ MonoBehaviour:
       - m_Id: efa3c392dd118ae4896d2ce8c18c16da
         m_Value: ServerData/[BuildTarget]
       - m_Id: 8563e103a11eee1439fdf5f243f54489
-        m_Value: http://localhost/[BuildTarget]
+        m_Value: https://e18c0552-3294-4be0-8f26-424937e2da7b.client-api.unity3dusercontent.com/client_api/v1/buckets/2a435050-ea1d-4aaa-9682-447a94ae4bd6/release_by_badge/latest/entry_by_path/content/?path=/[BuildTarget]
+    - m_InheritedParent: 
+      m_Id: 24f0c0b9001204262893d43ffc44d685
+      m_ProfileName: UCD
+      m_Values:
+      - m_Id: 8087ae86953b0de468081de57a9fabf0
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 5fb1ef61c8de4a545aa7b557fc219882
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 3179d4c82330e4a4d831233081cf70ae
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: efa3c392dd118ae4896d2ce8c18c16da
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 8563e103a11eee1439fdf5f243f54489
+        m_Value: https://e18c0552-3294-4be0-8f26-424937e2da7b.client-api.unity3dusercontent.com/client_api/v1/buckets/2a435050-ea1d-4aaa-9682-447a94ae4bd6/release_by_badge/latest/entry_by_path/content/?path=[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 8087ae86953b0de468081de57a9fabf0
       m_Name: BuildTarget
@@ -85,6 +99,10 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - MenuScenes
+    - ManagerScenes
+    - LogicScriptableObjects
+    - DataScriptableObjects
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: fe9dd70bf02d5c040bb61f781ed1b57d, type: 2}
@@ -98,7 +116,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f68369a03ce41304e84bad8f686021a2, type: 2}
   - {fileID: 11400000, guid: f50caa19e450bd340b0917e6d0b7e3bc, type: 2}
   - {fileID: 11400000, guid: b9310f7b1c4ea014494f9a38ce72dab0, type: 2}
-  m_ActiveProfileId: 792f1599fefdbf843b672f7db0fcadd6
+  m_ActiveProfileId: 24f0c0b9001204262893d43ffc44d685
   m_HostingServicesManager:
     m_HostingServiceInfos:
     - classRef: UnityEditor.AddressableAssets.HostingServices.HttpHostingService,
@@ -111,7 +129,7 @@ MonoBehaviour:
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Library/com.unity.addressables/aa/OSX/StandaloneOSX;
+          m_Data: Library/com.unity.addressables/aa/OSX/StandaloneOSX;ServerData/StandaloneOSX
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
@@ -119,7 +137,7 @@ MonoBehaviour:
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Local Hosting 0
+          m_Data: ccd
           m_Key: DescriptiveName
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
