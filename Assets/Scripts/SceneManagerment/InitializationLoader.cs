@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class InitializationLoader : MonoBehaviour
@@ -23,6 +27,11 @@ public class InitializationLoader : MonoBehaviour
     [SerializeField] private AssetLabelReference[] labels;
 
     [SerializeField] private bool useDownload;
+    [SerializeField] private bool useClearCache;
+    [SerializeField] private bool useClearDependencyCache;
+    [SerializeField] private bool useCatalog;
+
+    [SerializeField] private Text log;
     private void Awake()
     {
         DebugFro.isLogVisable = true;
@@ -34,9 +43,13 @@ public class InitializationLoader : MonoBehaviour
             DebugFro.Log(label.labelString);
         }
 
-        Caching.ClearCache();
-        
-        // 냅다 다운로드
+        ClearCahe();
+
+        if (useCatalog)
+        {
+            StartCoroutine(UpdateCatalogs());         
+        }
+
         if (useDownload)
         {
             StartCoroutine(BundleDownload());            
@@ -46,12 +59,6 @@ public class InitializationLoader : MonoBehaviour
             managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
                 += LoadEventChannel;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     private void LoadEventChannel(AsyncOperationHandle<SceneInstance> obj)
@@ -84,6 +91,11 @@ public class InitializationLoader : MonoBehaviour
             Addressables.GetDownloadSizeAsync(labels[capture]).Completed += (opSize) =>
             {
                 DebugFro.Log(className, $"{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
+
+                while (updateMode == eModeType.Wait && updateMode == eModeType.DowaloadAsset)
+                {
+                    new WaitForSeconds(1f);
+                }
                 
                 
                 if (opSize.Status == AsyncOperationStatus.Succeeded && opSize.Result > 0)
@@ -119,9 +131,59 @@ public class InitializationLoader : MonoBehaviour
         {
             updateMode = eModeType.DownloadAll;
             DebugFro.Log(className, "모두 다운로드!!");
-            
-            managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
-                += LoadEventChannel;
+
+            if (useDownload)
+            {
+                managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
+                    += LoadEventChannel;
+            }
+            else
+            {
+                // Remote 인 경우 다운로드도 하는 기능을 가지고 있음
+                managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
+                    += LoadEventChannel;
+            }
+
+        }
+    }
+
+    private void ClearCahe()
+    {
+        if (useClearCache)
+        {
+            Caching.ClearCache();
+        }
+
+        if (useClearDependencyCache)
+        {
+            foreach (var label in labels)
+            {
+                Addressables.ClearDependencyCacheAsync(label);
+            }
+        }
+    }
+
+    IEnumerator UpdateCatalogs()
+    {
+        List<string> catalogsToUpdate = new List<string>();
+        AsyncOperationHandle<List<string>> checkForUpdateHandle = Addressables.CheckForCatalogUpdates();
+        checkForUpdateHandle.Completed += op =>
+        {
+            DebugFro.Log(className, op.Result.Capacity.ToString());
+            catalogsToUpdate.AddRange(op.Result);
+        };
+        yield return checkForUpdateHandle;
+        if (catalogsToUpdate.Count > 0)
+        {
+            DebugFro.Log(className, "Update 할 내역이 있습니다.");
+            log.text = $"Update 할 내역이 있습니다.";
+            AsyncOperationHandle<List<IResourceLocator>> updateHandle = Addressables.UpdateCatalogs(catalogsToUpdate);
+            yield return updateHandle;
+        }
+        else
+        {
+            log.text = "Update 할 내역이 없습니다.";
+            DebugFro.Log(className, "Update 할 내역이 없습니다.");
         }
     }
 }

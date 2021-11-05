@@ -17,13 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c0067137b93904677b00032a8b8a7217
   m_SerializeEntries:
-  - m_GUID: 230ab7464cdbb4f94934dec0760fb68c
-    m_Address: PersistentManagers
+  - m_GUID: b731f8f17872e4455979585a34bf558d
+    m_Address: Gameplay
     m_ReadOnly: 0
     m_SerializedLabels:
     - ManagerScenes
-  - m_GUID: b731f8f17872e4455979585a34bf558d
-    m_Address: Gameplay
+  - m_GUID: 230ab7464cdbb4f94934dec0760fb68c
+    m_Address: PersistentManagers
     m_ReadOnly: 0
     m_SerializedLabels:
     - ManagerScenes
