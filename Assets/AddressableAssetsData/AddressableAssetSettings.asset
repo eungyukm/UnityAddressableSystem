@@ -44,6 +44,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d594c74162bb401aae672450f28fc00, type: 2}
   - {fileID: 11400000, guid: 76b253d7223984a71af5971152bfe00d, type: 2}
   - {fileID: 11400000, guid: c9d36a0aac641436087c09137a359ad6, type: 2}
+  - {fileID: 11400000, guid: e2e7bb7614fbd48a4b67e94b6d23829e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -103,6 +104,7 @@ MonoBehaviour:
     - ManagerScenes
     - LogicScriptableObjects
     - DataScriptableObjects
+    - StarterAssets
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: fe9dd70bf02d5c040bb61f781ed1b57d, type: 2}
@@ -129,7 +131,7 @@ MonoBehaviour:
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Library/com.unity.addressables/aa/OSX/StandaloneOSX;ServerData/StandaloneOSX
+          m_Data: Library/com.unity.addressables/aa/OSX/StandaloneOSX;ServerData/StandaloneOSX;
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean

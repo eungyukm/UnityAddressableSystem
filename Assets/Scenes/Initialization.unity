@@ -406,6 +406,7 @@ MonoBehaviour:
   - m_LabelString: ManagerScenes
   - m_LabelString: LogicScriptableObjects
   - m_LabelString: DataScriptableObjects
+  - m_LabelString: StarterAssets
   useDownload: 1
   useClearCache: 0
   useClearDependencyCache: 1
