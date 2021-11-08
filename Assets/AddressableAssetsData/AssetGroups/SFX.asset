@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 271f8fb833e894f64ab03e7d663dc7e8
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 283a4aea3a1670c4ebf8fa5901d18c08
+    m_Address: Assets/Audio/SFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:
