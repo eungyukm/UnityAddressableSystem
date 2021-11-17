@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -125,13 +125,6 @@ public class SceneLoader : MonoBehaviour
     private void LoadDemo(GameSceneSO demoToLoad, bool showLoadingScreen, bool fadeScreen)
     {
         DebugFro.Log(className,"demoToLoad Call!!");
-        if (objs.Length > 0)
-        {
-            foreach (var o in objs)
-            {
-                Destroy(o);
-            }
-        }
         
         //Prevent a double-loading, for situations where the player falls in two Exit colliders in one frame
         if (isLoading)
@@ -162,7 +155,8 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator UnloadPreviousScene()
     {
-        DebugFro.Log( className,"UnloadPreviousScene Call!!");
+        DestroyDemo();
+        DebugFro.Log(className, "UnloadPreviousScene Call!!");
         // TODO : fadeRequestChannel 하기
 
         yield return new WaitForSeconds(fadeDuration);
@@ -178,7 +172,21 @@ public class SceneLoader : MonoBehaviour
 
         LoadNewScene();
     }
-    
+
+    /// <summary>
+    /// 데모 오브젝트 제거
+    /// </summary>
+    private void DestroyDemo()
+    {
+        if (objs.Length > 0)
+        {
+            foreach (var o in objs)
+            {
+                Destroy(o);
+            }
+        }
+    }
+
     /// <summary>
     /// 비동기로 Scene을 로드
     /// </summary>

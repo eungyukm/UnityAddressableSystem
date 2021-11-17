@@ -1487,7 +1487,6 @@ GameObject:
   - component: {fileID: 1678432760}
   - component: {fileID: 1678432759}
   - component: {fileID: 1678432762}
-  - component: {fileID: 1678432763}
   m_Layer: 0
   m_Name: AddressablesManager
   m_TagString: Untagged
@@ -1526,6 +1525,8 @@ MonoBehaviour:
   labelReferences:
   - m_LabelString: MenuScenes
   - m_LabelString: ManagerScenes
+  - m_LabelString: LogicScriptableObjects
+  - m_LabelString: DataScriptableObjects
   - m_LabelString: StarterAssets
   downloadDone: {fileID: 11400000, guid: 512c3e7d43cbb4b47a290e82ed2cc811, type: 2}
   onDownload: {fileID: 11400000, guid: f80171eb3b3f74f44b8d21d06c75fe8b, type: 2}
@@ -1559,25 +1560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d538c4d7ad590ca409d7c8515cb5dac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1678432763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678432758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b63983ba4aab44ab75ec4bd59c4ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playOnBundleDelete: 0
-  labels:
-  - m_LabelString: MenuScenes
-  - m_LabelString: ManagerScenes
-  - m_LabelString: StarterAssets
-  onDelete: {fileID: 11400000, guid: 454ac940c96d4ba4bb1f3af9e7771a16, type: 2}
-  DestroyBundle: 1
 --- !u!1 &1690452266
 GameObject:
   m_ObjectHideFlags: 0
