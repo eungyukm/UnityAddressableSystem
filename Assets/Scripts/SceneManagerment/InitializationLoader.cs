@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ public class InitializationLoader : MonoBehaviour
     
     [SerializeField] private AssetReference menuLoadChannel = default;
 
-    private eModeType updateMode;
+    private ModeType updateMode;
 
     private const string className = "InitializationLoader";
     
@@ -26,17 +26,19 @@ public class InitializationLoader : MonoBehaviour
 
     [SerializeField] private AssetLabelReference[] labels;
 
-    [SerializeField] private bool useDownload;
     [SerializeField] private bool useClearCache;
-    [SerializeField] private bool useClearDependencyCache;
     [SerializeField] private bool useCatalog;
 
     [SerializeField] private Text log;
+
+    [SerializeField] private VoidEventChannelSO downloadDone;
+
+    [SerializeField] private bool preventSceneLoad;
     private void Awake()
     {
         DebugFro.isLogVisable = true;
 
-        updateMode = eModeType.None;
+        updateMode = ModeType.None;
 
         foreach (var label in labels)
         {
@@ -44,20 +46,23 @@ public class InitializationLoader : MonoBehaviour
         }
 
         ClearCahe();
+    }
 
-        if (useCatalog)
-        {
-            StartCoroutine(UpdateCatalogs());         
-        }
+    private void OnEnable()
+    {
+        downloadDone.OnEventRaised += SceneLoad;
+    }
 
-        if (useDownload)
+    private void OnDisable()
+    {
+        downloadDone.OnEventRaised -= SceneLoad;
+    }
+
+    private void SceneLoad()
+    {
+        if(!preventSceneLoad)
         {
-            StartCoroutine(BundleDownload());            
-        }
-        else
-        {
-            managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
-                += LoadEventChannel;
+            managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += LoadEventChannel;
         }
     }
 
@@ -73,7 +78,7 @@ public class InitializationLoader : MonoBehaviour
         SceneManager.UnloadSceneAsync(0);
     }
     
-    public enum eModeType
+    public enum ModeType
     {
         None,
         DowaloadAsset,
@@ -92,7 +97,7 @@ public class InitializationLoader : MonoBehaviour
             {
                 DebugFro.Log(className, $"{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
 
-                while (updateMode == eModeType.Wait && updateMode == eModeType.DowaloadAsset)
+                while (updateMode == ModeType.Wait && updateMode == ModeType.DowaloadAsset)
                 {
                     new WaitForSeconds(1f);
                 }
@@ -114,7 +119,7 @@ public class InitializationLoader : MonoBehaviour
                     OnDownloadDone();
                 }
             };
-            updateMode = eModeType.Wait;
+            updateMode = ModeType.Wait;
 
             yield return null;
         }
@@ -123,27 +128,14 @@ public class InitializationLoader : MonoBehaviour
     private void OnDownloadDone()
     {
         DebugFro.Log(className, "다운로드 완료!!");
-        updateMode = eModeType.DownloadDone;
+        updateMode = ModeType.DownloadDone;
 
         downloadCount++;
 
         if (downloadCount >= labels.Length)
         {
-            updateMode = eModeType.DownloadAll;
+            updateMode = ModeType.DownloadAll;
             DebugFro.Log(className, "모두 다운로드!!");
-
-            if (useDownload)
-            {
-                managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
-                    += LoadEventChannel;
-            }
-            else
-            {
-                // Remote 인 경우 다운로드도 하는 기능을 가지고 있음
-                managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed
-                    += LoadEventChannel;
-            }
-
         }
     }
 
@@ -153,37 +145,7 @@ public class InitializationLoader : MonoBehaviour
         {
             Caching.ClearCache();
         }
-
-        if (useClearDependencyCache)
-        {
-            foreach (var label in labels)
-            {
-                Addressables.ClearDependencyCacheAsync(label);
-            }
-        }
     }
 
-    IEnumerator UpdateCatalogs()
-    {
-        List<string> catalogsToUpdate = new List<string>();
-        AsyncOperationHandle<List<string>> checkForUpdateHandle = Addressables.CheckForCatalogUpdates();
-        checkForUpdateHandle.Completed += op =>
-        {
-            DebugFro.Log(className, op.Result.Capacity.ToString());
-            catalogsToUpdate.AddRange(op.Result);
-        };
-        yield return checkForUpdateHandle;
-        if (catalogsToUpdate.Count > 0)
-        {
-            DebugFro.Log(className, "Update 할 내역이 있습니다.");
-            log.text = $"Update 할 내역이 있습니다.";
-            AsyncOperationHandle<List<IResourceLocator>> updateHandle = Addressables.UpdateCatalogs(catalogsToUpdate);
-            yield return updateHandle;
-        }
-        else
-        {
-            log.text = "Update 할 내역이 없습니다.";
-            DebugFro.Log(className, "Update 할 내역이 없습니다.");
-        }
-    }
+
 }

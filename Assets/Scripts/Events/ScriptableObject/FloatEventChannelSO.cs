@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/FloatEventChannel", fileName = "New FloatEventChannelSO")]
-public class FloatEventChannelSO : ScriptableObject
+public class FloatEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<float> OnEventRaised;
 

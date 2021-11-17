@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a606a53e86444258d5930ac8e89e38, type: 3}
+  m_Name: OnCheckSize_Channel
+  m_EditorClassIdentifier: 
+  guid: d929202e2eb82db47b5882287c942f6c
+  description: "\uC0AC\uC774\uC988 \uCCB4\uD06C \uC2DC\uC791\uD55C\uB2E4\uB294 \uC2A4\uD06C\uB9BD\uD130\uBE14
+    \uC624\uBE0C\uC81D\uD2B8"

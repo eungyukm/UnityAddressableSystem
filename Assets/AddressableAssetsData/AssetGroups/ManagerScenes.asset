@@ -22,11 +22,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ManagerScenes
+    - PreLoad
   - m_GUID: 230ab7464cdbb4f94934dec0760fb68c
     m_Address: PersistentManagers
     m_ReadOnly: 0
     m_SerializedLabels:
     - ManagerScenes
+    - PreLoad
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:
