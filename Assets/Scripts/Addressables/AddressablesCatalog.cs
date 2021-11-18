@@ -7,9 +7,11 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AddressablesCatalog : MonoBehaviour
 {
+    //[SerializeField] private ContentCatalogData catalogData;
     // Start is called before the first frame update
     void Start()
     {
+        
         StartCoroutine(UpdateCatalogs());
     }
 
@@ -21,12 +23,18 @@ public class AddressablesCatalog : MonoBehaviour
 
     IEnumerator UpdateCatalogs()
     {
+        yield return Addressables.InitializeAsync();
         List<string> catalogsToUpdate = new List<string>();
         AsyncOperationHandle<List<string>> checkForUpdateHandle = Addressables.CheckForCatalogUpdates();
         checkForUpdateHandle.Completed += op =>
         {
             Debug.Log(op.Result.Capacity.ToString());
             catalogsToUpdate.AddRange(op.Result);
+
+            if (catalogsToUpdate.Count > 0)
+            {
+                Debug.Log("Update 할 내역이 있습니다.");
+            }
         };
         yield return checkForUpdateHandle;
         if (catalogsToUpdate.Count > 0)

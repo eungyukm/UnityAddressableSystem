@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Id: 8563e103a11eee1439fdf5f243f54489
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 2
-  m_overridePlayerVersion: 1.1
+  m_overridePlayerVersion: mac
   m_GroupAssets:
   - {fileID: 11400000, guid: 3125bcedeaf3e1048937217e38d77d78, type: 2}
   - {fileID: 11400000, guid: 2cc563c1a42c09e42b8939ff543fd712, type: 2}
@@ -45,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76b253d7223984a71af5971152bfe00d, type: 2}
   - {fileID: 11400000, guid: c9d36a0aac641436087c09137a359ad6, type: 2}
   - {fileID: 11400000, guid: e2e7bb7614fbd48a4b67e94b6d23829e, type: 2}
+  - {fileID: 11400000, guid: eb6d3da18a9fdf443a5d3c6cdf6d4fd8, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1

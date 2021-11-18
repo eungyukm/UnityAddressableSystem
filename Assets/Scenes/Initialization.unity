@@ -1037,7 +1037,7 @@ MonoBehaviour:
   useCatalog: 0
   log: {fileID: 707960553}
   downloadDone: {fileID: 11400000, guid: 512c3e7d43cbb4b47a290e82ed2cc811, type: 2}
-  preventSceneLoad: 0
+  preventSceneLoad: 1
 --- !u!1001 &1502187899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678432758}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d538c4d7ad590ca409d7c8515cb5dac8, type: 3}
   m_Name: 
