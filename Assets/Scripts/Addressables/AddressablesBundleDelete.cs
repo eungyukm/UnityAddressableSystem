@@ -32,6 +32,8 @@ public class AddressablesBundleDelete : MonoBehaviour
         {
             BundleDelete();
         }
+
+        DontDestroyOnLoad(this);
     }
 
     private void OnDestroy()

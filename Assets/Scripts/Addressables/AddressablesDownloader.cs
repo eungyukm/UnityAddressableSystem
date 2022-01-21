@@ -23,6 +23,8 @@ public class AddressablesDownloader : MonoBehaviour
 
     [SerializeField] private bool playOnDownload;
 
+    [SerializeField] private bool DestroyBundle;
+
     private void OnEnable()
     {
         onDownload.OnEventRaised += CheckTotalDownloadSize;
@@ -172,9 +174,6 @@ public class AddressablesDownloader : MonoBehaviour
             yield return null;
         }
     }
-
-
-
 
     //private IEnumerator 
 
