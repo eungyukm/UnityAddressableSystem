@@ -19,8 +19,6 @@ public class InitializationLoader : MonoBehaviour
     [SerializeField] private AssetReference menuLoadChannel = default;
 
     private ModeType updateMode;
-
-    private const string className = "InitializationLoader";
     
     private int downloadCount = 0;
 
@@ -89,13 +87,13 @@ public class InitializationLoader : MonoBehaviour
 
     private IEnumerator BundleDownload()
     {
-        Debug.Log(className,"다운로드 시작!");
+        Debug.Log("다운로드 시작!");
         for (int i = 0; i < labels.Length; i++)
         {
             int capture = i;
             Addressables.GetDownloadSizeAsync(labels[capture]).Completed += (opSize) =>
             {
-                Debug.Log(className, $"{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
+                Debug.Log("{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
 
                 while (updateMode == ModeType.Wait && updateMode == ModeType.DowaloadAsset)
                 {
@@ -127,7 +125,7 @@ public class InitializationLoader : MonoBehaviour
 
     private void OnDownloadDone()
     {
-        Debug.Log(className, "다운로드 완료!!");
+        Debug.Log("다운로드 완료!!");
         updateMode = ModeType.DownloadDone;
 
         downloadCount++;
@@ -135,7 +133,7 @@ public class InitializationLoader : MonoBehaviour
         if (downloadCount >= labels.Length)
         {
             updateMode = ModeType.DownloadAll;
-            Debug.Log(className, "모두 다운로드!!");
+            Debug.Log("모두 다운로드!!");
         }
     }
 
