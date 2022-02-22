@@ -39,7 +39,7 @@ namespace StarterAssets
                 // if no PackageImportList.txt exists
                 if (requiredPackagesListFile.Length == 0)
                 {
-                    Debug.LogError(
+                    UnityEngine.Debug.LogError(
                         "[Auto Package] : Couldn't find the packages list. Be sure there is a file called PackageImportList in your project");
                 }
                 else
@@ -70,7 +70,7 @@ namespace StarterAssets
                     {
                         if (compatibleList.Status == StatusCode.Failure || compatibleList.Error != null)
                         {
-                            Debug.LogError(compatibleList.Error.message);
+                            UnityEngine.Debug.LogError(compatibleList.Error.message);
                             break;
                         }
                     }
@@ -82,7 +82,7 @@ namespace StarterAssets
                     {
                         if (clientList.Status == StatusCode.Failure || clientList.Error != null)
                         {
-                            Debug.LogError(clientList.Error.message);
+                            UnityEngine.Debug.LogError(clientList.Error.message);
                             break;
                         }
                     }
@@ -152,7 +152,7 @@ namespace StarterAssets
                                             $"version is {packagesToAdd[i].version}. Would you like to upgrade it to the latest version? (Recommended)",
                                             "Yes", "No");
 
-                                        Debug.Log(
+                                        UnityEngine.Debug.Log(
                                             $"<b>Package version behind</b>: {package.packageId} is behind latest verified " +
                                             $"version {package.versions.verified}. prompting user install");
                                         break;
@@ -161,7 +161,7 @@ namespace StarterAssets
                                     case 0:
                                         installRequired[i] = false;
 
-                                        Debug.Log(
+                                        UnityEngine.Debug.Log(
                                             $"<b>Package version match</b>: {package.packageId} matches latest verified version " +
                                             $"{package.versions.verified}. Skipped install");
                                         break;
@@ -173,7 +173,7 @@ namespace StarterAssets
                                             $"{package.version} is unverified. Would you like to downgrade it to the latest verified version? " +
                                             "(Recommended)", "Yes", "No");
 
-                                        Debug.Log(
+                                        UnityEngine.Debug.Log(
                                             $"<b>Package version ahead</b>: {package.packageId} is newer than latest verified " +
                                             $"version {package.versions.verified}, skipped install");
                                         break;
@@ -201,7 +201,7 @@ namespace StarterAssets
             if (packageVersion != null)
             {
                 packageName = packageName + "@" + packageVersion;
-                Debug.Log($"<b>Adding package</b>: {packageName}");
+                UnityEngine.Debug.Log($"<b>Adding package</b>: {packageName}");
             }
 
             AddRequest newPackage = Client.Add(packageName);
@@ -210,7 +210,7 @@ namespace StarterAssets
             {
                 if (newPackage.Status == StatusCode.Failure || newPackage.Error != null)
                 {
-                    Debug.LogError(newPackage.Error.message);
+                    UnityEngine.Debug.LogError(newPackage.Error.message);
                     return null;
                 }
             }

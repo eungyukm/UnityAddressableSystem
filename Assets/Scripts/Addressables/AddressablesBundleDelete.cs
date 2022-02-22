@@ -55,7 +55,7 @@ public class AddressablesBundleDelete : MonoBehaviour
 
     private void BundleDelete()
     {
-        Debug.Log("ClearDependencyCacheAsync");
+        UnityEngine.Debug.Log("ClearDependencyCacheAsync");
 
         //StartCoroutine(BundleDeleteRoutine());
     }

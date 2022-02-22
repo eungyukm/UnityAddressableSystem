@@ -9,7 +9,7 @@ using UnityEngine;
 public class StartGame : MonoBehaviour
 {
     // 다음으로 로드할 Locatios SO
-    [SerializeField] private GameSceneSO _locationsToLoad;
+    [SerializeField] private LocationSO _locationsToLoad;
 
     [Header("Broadcasting on")] 
     [SerializeField] private LoadEventChannelSO _startGameEvent = default;
@@ -21,6 +21,7 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Debug.Log("StartGame Call!!");
         _startNewGameEvent.OnEventRaised += StartNewGame;   
     }
 
@@ -31,6 +32,7 @@ public class StartGame : MonoBehaviour
 
     private void StartNewGame()
     {
+        Debug.Log("StartNewGame Call!!");
         _startGameEvent.RaiseEvent(_locationsToLoad, _showLoadScreen);
     }
 }

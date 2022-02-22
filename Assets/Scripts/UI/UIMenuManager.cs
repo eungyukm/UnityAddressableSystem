@@ -6,29 +6,22 @@ using UnityEngine.UI;
 
 public class UIMenuManager : MonoBehaviour
 {
-    [SerializeField] private Button startBtn = default;
-
-    [SerializeField] private GameplaySO demoToLoad = default;
-
     [SerializeField] private UIMainMenu _mainMenuPanel = default;
 
     [Header("Broadcasting on")]
-    [SerializeField] private LoadEventChannelSO _startNewGameEvent = default;
+    [SerializeField]
+    private VoidEventChannelSO _startNewGameEvent = default;
 
 
     private IEnumerator Start()
     {
-        yield return null;
+        yield return new WaitForSeconds(0.4f);
         _mainMenuPanel.NewGameButtonAction += ButtonStartNewGameClicked;
     }
 
     private void ButtonStartNewGameClicked()
     {
-        throw new NotImplementedException();
-    }
-
-    private void NextScene()
-    {
-
+        UnityEngine.Debug.Log("MainMenu Call!!");
+        _startNewGameEvent.RaiseEvent();
     }
 }

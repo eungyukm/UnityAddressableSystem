@@ -95,12 +95,12 @@ public class InitializaitonUI : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W))
         {
-            Debug.Log("!!");
+            UnityEngine.Debug.Log("!!");
             downBefore.SetActive(false);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Debug.Log("@@");
+            UnityEngine.Debug.Log("@@");
             downBefore.SetActive(true);
         }
     }

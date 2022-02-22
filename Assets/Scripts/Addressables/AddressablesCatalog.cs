@@ -28,24 +28,24 @@ public class AddressablesCatalog : MonoBehaviour
         AsyncOperationHandle<List<string>> checkForUpdateHandle = Addressables.CheckForCatalogUpdates();
         checkForUpdateHandle.Completed += op =>
         {
-            Debug.Log(op.Result.Capacity.ToString());
+            UnityEngine.Debug.Log(op.Result.Capacity.ToString());
             catalogsToUpdate.AddRange(op.Result);
 
             if (catalogsToUpdate.Count > 0)
             {
-                Debug.Log("Update 할 내역이 있습니다.");
+                UnityEngine.Debug.Log("Update 할 내역이 있습니다.");
             }
         };
         yield return checkForUpdateHandle;
         if (catalogsToUpdate.Count > 0)
         {
-            Debug.Log("Update 할 내역이 있습니다.");
+            UnityEngine.Debug.Log("Update 할 내역이 있습니다.");
             AsyncOperationHandle<List<IResourceLocator>> updateHandle = Addressables.UpdateCatalogs(catalogsToUpdate);
             yield return updateHandle;
         }
         else
-        { 
-           Debug.Log("Update 할 내역이 없습니다.");
+        {
+            UnityEngine.Debug.Log("Update 할 내역이 없습니다.");
         }
     }
 }

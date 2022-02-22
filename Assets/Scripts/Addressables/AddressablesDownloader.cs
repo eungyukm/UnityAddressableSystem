@@ -93,7 +93,7 @@ public class AddressablesDownloader : MonoBehaviour
         while(downloadHandle.PercentComplete < 1 && !downloadHandle.IsDone)
         {
             persent = downloadHandle.PercentComplete;
-            Debug.Log("label : " + label + " persent : " + persent);
+            UnityEngine.Debug.Log("label : " + label + " persent : " + persent);
             downLoadBarEvent.RaiseEvent(persent);
             yield return null;
         }
@@ -105,8 +105,8 @@ public class AddressablesDownloader : MonoBehaviour
 
     private void CheckDownloadSizeDone()
     {
-        Debug.Log("다운로드 사이즈 측정 종료!");
-        Debug.Log("다운로드 사이즈 : " + totalDownloadSize);
+        UnityEngine.Debug.Log("다운로드 사이즈 측정 종료!");
+        UnityEngine.Debug.Log("다운로드 사이즈 : " + totalDownloadSize);
 
         StartDownload();
     }
@@ -140,7 +140,7 @@ public class AddressablesDownloader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("다운로드 사이즈가 너무 작습니다.");
+                UnityEngine.Debug.LogWarning("다운로드 사이즈가 너무 작습니다.");
             }
             Addressables.Release(handle);
             downloadState = DownloadState.CheckDownloadSizeDone;

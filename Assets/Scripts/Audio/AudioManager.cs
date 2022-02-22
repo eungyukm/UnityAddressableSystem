@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour
         bool volumeSet = audioMixer.SetFloat(parameterName, NormalizedToMixerValue(normalizedVolume));
         if(!volumeSet)
         {
-            Debug.LogError("AudioMixer parameter를 찾을 수 없습니다.");
+            UnityEngine.Debug.LogError("AudioMixer parameter를 찾을 수 없습니다.");
         }
     }
 

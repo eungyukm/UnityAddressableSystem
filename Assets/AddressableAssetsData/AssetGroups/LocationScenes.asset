@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LocationScenes
+  m_EditorClassIdentifier: 
+  m_GroupName: LocationScenes
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bf86c2b351a067d43aef8e745507370f
+  m_SerializeEntries:
+  - m_GUID: 1c2c8555d94958a4a9125a58a8aa8432
+    m_Address: Assets/Scenes/Locations/Beach.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fb0ef26928c1b35468f096f094631672
+    m_Address: Assets/Scenes/Locations/Mountain.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b9d11845d144f254ea024e283dde0824, type: 2}
+    - {fileID: 11400000, guid: bd6c1ae22607d5b45a053684b05b5a4d, type: 2}

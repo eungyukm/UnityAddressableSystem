@@ -16,7 +16,7 @@ public class AddressablesLoad : MonoBehaviour
     /// </summary>
     private void LoadStart()
     {
-        Debug.Log("Load 시작!");
+        UnityEngine.Debug.Log("Load 시작!");
     }
     // Start is called before the first frame update
     void Start()

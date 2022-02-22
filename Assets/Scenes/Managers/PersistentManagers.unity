@@ -731,9 +731,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePlayScene: {fileID: 11400000, guid: ca4035bcfed284176a8079269c57e7dd, type: 2}
-  loadLocation: {fileID: 11400000, guid: a3460beba0dfc4e8d86cdc5c781e40fc, type: 2}
-  loadMenu: {fileID: 11400000, guid: 382936d5cf0fa4c7f9862b14f510c19c, type: 2}
-  loadDemo: {fileID: 11400000, guid: 799d4e2955fc84d1f8698da6a08645c1, type: 2}
+  _loadLocation: {fileID: 11400000, guid: a3460beba0dfc4e8d86cdc5c781e40fc, type: 2}
+  _loadMenu: {fileID: 11400000, guid: 382936d5cf0fa4c7f9862b14f510c19c, type: 2}
+  _loadDemo: {fileID: 11400000, guid: 799d4e2955fc84d1f8698da6a08645c1, type: 2}
   onSceneReady: {fileID: 11400000, guid: 5d5003b0de1bd4c6f8d5fe7bf4759c52, type: 2}
   objs:
   - {fileID: 938370713}

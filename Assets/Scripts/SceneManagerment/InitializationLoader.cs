@@ -36,13 +36,13 @@ public class InitializationLoader : MonoBehaviour
     [SerializeField] private bool preventSceneLoad;
     private void Awake()
     {
-        DebugFro.isLogVisable = true;
+        Debug.isLogVisable = true;
 
         updateMode = ModeType.None;
 
         foreach (var label in labels)
         {
-            DebugFro.Log(label.labelString);
+            Debug.Log(label.labelString);
         }
 
         ClearCahe();
@@ -89,13 +89,13 @@ public class InitializationLoader : MonoBehaviour
 
     private IEnumerator BundleDownload()
     {
-        DebugFro.Log(className,"다운로드 시작!");
+        Debug.Log(className,"다운로드 시작!");
         for (int i = 0; i < labels.Length; i++)
         {
             int capture = i;
             Addressables.GetDownloadSizeAsync(labels[capture]).Completed += (opSize) =>
             {
-                DebugFro.Log(className, $"{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
+                Debug.Log(className, $"{labels[capture].labelString} Size : " + string.Concat(opSize.Result, " byte"));
 
                 while (updateMode == ModeType.Wait && updateMode == ModeType.DowaloadAsset)
                 {
@@ -127,7 +127,7 @@ public class InitializationLoader : MonoBehaviour
 
     private void OnDownloadDone()
     {
-        DebugFro.Log(className, "다운로드 완료!!");
+        Debug.Log(className, "다운로드 완료!!");
         updateMode = ModeType.DownloadDone;
 
         downloadCount++;
@@ -135,7 +135,7 @@ public class InitializationLoader : MonoBehaviour
         if (downloadCount >= labels.Length)
         {
             updateMode = ModeType.DownloadAll;
-            DebugFro.Log(className, "모두 다운로드!!");
+            Debug.Log(className, "모두 다운로드!!");
         }
     }
 
