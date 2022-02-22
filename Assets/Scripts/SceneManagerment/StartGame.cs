@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class StartGame : MonoBehaviour
 {
+    // 다음으로 로드할 Locatios SO
     [SerializeField] private GameSceneSO _locationsToLoad;
 
     [Header("Broadcasting on")] 
@@ -31,11 +32,5 @@ public class StartGame : MonoBehaviour
     private void StartNewGame()
     {
         _startGameEvent.RaiseEvent(_locationsToLoad, _showLoadScreen);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
