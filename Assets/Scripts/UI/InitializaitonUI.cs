@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class InitializaitonUI : MonoBehaviour
 {
@@ -36,16 +37,26 @@ public class InitializaitonUI : MonoBehaviour
     [Header("Slider")]
     [SerializeField] private Slider percentSlider;
 
+    [Header("preload with progress")]
+    [SerializeField] private PreloadWithProgress preloadWithProgress;
+
     private void OnEnable()
     {
         sliderChangeValueEvent.OnEventRaised += SetLoadingBar;
         DownLoadDone.OnEventRaised += SetDownloadDoneUI;
+
+        preloadWithProgress.preLoadComplete += SetUPDownloadUI;
+        preloadWithProgress.progressAction += SetUPLoadingBar;
     }
+
 
     private void OnDisable()
     {
         sliderChangeValueEvent.OnEventRaised -= SetLoadingBar;
         DownLoadDone.OnEventRaised -= SetDownloadDoneUI;
+
+        preloadWithProgress.preLoadComplete -= SetUPDownloadUI;
+        preloadWithProgress.progressAction -= SetUPLoadingBar;
     }
 
     private void SetDownloadDoneUI()
@@ -57,6 +68,17 @@ public class InitializaitonUI : MonoBehaviour
     private void SetLoadingBar(float value)
     {
         percentSlider.value = value;
+    }
+
+    private void SetUPLoadingBar(float value)
+    {
+        Debug.Log("value : " + value);
+    }
+
+
+    private void SetUPDownloadUI(long downloadBar)
+    {
+        Debug.Log("Bar : " + downloadBar);
     }
 
     // Start is called before the first frame update

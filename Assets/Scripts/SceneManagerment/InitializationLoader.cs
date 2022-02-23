@@ -23,15 +23,18 @@ public class InitializationLoader : MonoBehaviour
     private int downloadCount = 0;
 
     [SerializeField] private AssetLabelReference[] labels;
+    [SerializeField] private AssetLabelReference preLoad;
 
-    [SerializeField] private bool useClearCache;
-    [SerializeField] private bool useCatalog;
+    [SerializeField] private bool _useClearCache;
+    [SerializeField] private bool _useCatalog;
 
     [SerializeField] private Text log;
 
     [SerializeField] private VoidEventChannelSO downloadDone;
 
-    [SerializeField] private bool preventSceneLoad;
+    [SerializeField] private bool _preventSceneLoad;
+
+    [SerializeField] private bool _preLoad;
     private void Awake()
     {
         Debug.isLogVisable = true;
@@ -44,6 +47,7 @@ public class InitializationLoader : MonoBehaviour
         }
 
         ClearCahe();
+        ClearDependency();
     }
 
     private void OnEnable()
@@ -58,7 +62,7 @@ public class InitializationLoader : MonoBehaviour
 
     private void SceneLoad()
     {
-        if(!preventSceneLoad)
+        if(!_preventSceneLoad)
         {
             managerScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true).Completed += LoadEventChannel;
         }
@@ -139,11 +143,17 @@ public class InitializationLoader : MonoBehaviour
 
     private void ClearCahe()
     {
-        if (useClearCache)
+        if (_useClearCache)
         {
             Caching.ClearCache();
         }
     }
 
-
+    private void ClearDependency()
+    {
+        if(_preLoad)
+        {
+            Addressables.ClearDependencyCacheAsync(preLoad);
+        }
+    }
 }

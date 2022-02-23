@@ -977,6 +977,20 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8048048624505581723, guid: 5705b8c126bb9854ebe7c54dbe3af19a, type: 3}
   m_PrefabInstance: {fileID: 1502187899}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1171992601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171992599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9b0688d53373c4d9cdb61897e6c538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  labelReference:
+    m_LabelString: PreLoad
 --- !u!1 &1419770140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,11 +1047,14 @@ MonoBehaviour:
   - m_LabelString: LogicScriptableObjects
   - m_LabelString: DataScriptableObjects
   - m_LabelString: StarterAssets
-  useClearCache: 0
-  useCatalog: 0
+  preLoad:
+    m_LabelString: PreLoad
+  _useClearCache: 0
+  _useCatalog: 0
   log: {fileID: 707960553}
   downloadDone: {fileID: 11400000, guid: 512c3e7d43cbb4b47a290e82ed2cc811, type: 2}
-  preventSceneLoad: 0
+  _preventSceneLoad: 0
+  _preLoad: 0
 --- !u!1001 &1502187899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1598,7 +1615,7 @@ GameObject:
   - component: {fileID: 1690452267}
   - component: {fileID: 1690452271}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas-Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1720,6 +1737,7 @@ MonoBehaviour:
   downAfter: {fileID: 1134862079}
   tmpPercent: {fileID: 982540879}
   percentSlider: {fileID: 2068959926}
+  preloadWithProgress: {fileID: 1171992601}
 --- !u!1 &1780558173
 GameObject:
   m_ObjectHideFlags: 0
