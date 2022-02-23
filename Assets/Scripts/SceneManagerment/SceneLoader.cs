@@ -55,9 +55,7 @@ public class SceneLoader : MonoBehaviour
     #endif
 
     private void OnEnable()
-    {
-        Debug.isLogVisable = true;
-        
+    {    
         _loadLocation.OnLoadingRequested += LoadLocation;
         _loadMenu.OnLoadingRequested += LoadMenu;
         _loadDemo.OnLoadingRequested += LoadDemo;

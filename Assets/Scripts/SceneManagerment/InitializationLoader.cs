@@ -37,8 +37,6 @@ public class InitializationLoader : MonoBehaviour
     [SerializeField] private bool _preLoad;
     private void Awake()
     {
-        Debug.isLogVisable = true;
-
         updateMode = ModeType.None;
 
         foreach (var label in labels)
