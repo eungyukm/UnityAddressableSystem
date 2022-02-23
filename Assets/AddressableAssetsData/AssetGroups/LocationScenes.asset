@@ -20,11 +20,13 @@ MonoBehaviour:
   - m_GUID: 1c2c8555d94958a4a9125a58a8aa8432
     m_Address: Assets/Scenes/Locations/Beach.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Location
   - m_GUID: fb0ef26928c1b35468f096f094631672
     m_Address: Assets/Scenes/Locations/Mountain.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Location
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 78f6e5b76d00c1b4fba97b14e7b1b9a2, type: 2}
   m_SchemaSet:
