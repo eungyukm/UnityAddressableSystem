@@ -21,7 +21,7 @@ public class UIMenuManager : MonoBehaviour
 
     private void ButtonStartNewGameClicked()
     {
-        UnityEngine.Debug.Log("MainMenu Call!!");
+        Debug.Log("MainMenu Call!!");
         _startNewGameEvent.RaiseEvent();
     }
 }
